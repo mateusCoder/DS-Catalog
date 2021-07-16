@@ -1,6 +1,6 @@
 import React from 'react';
-import { ReactComponent as ProductImage } from '../../../../core/assets/images/product.svg';
-import ProductPrice from '../../../../core/components/ProductPrice';
+import { ReactComponent as ProductImage } from 'core/assets/images/product.svg';
+import ProductPrice from 'core/components/ProductPrice';
 
 import './styles.scss';
 

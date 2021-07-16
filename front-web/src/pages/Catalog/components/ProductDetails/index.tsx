@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import { ReactComponent as ArrowIcon } from '../../../../core/assets/images/arrow.svg'
-import { ReactComponent as ProductImage } from '../../../../core/assets/images/product.svg'
-import ProductPrice from '../../../../core/components/ProductPrice'
+import { ReactComponent as ArrowIcon } from 'core/assets/images/arrow.svg'
+import { ReactComponent as ProductImage } from 'core/assets/images/product.svg'
+import ProductPrice from 'core/components/ProductPrice'
 
 import './styles.scss'
 

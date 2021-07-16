@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactComponent as ArrowICon } from '../../assets/images/arrow.svg'
+import { ReactComponent as ArrowICon } from 'core/assets/images/arrow.svg'
 
 import './styles.scss'
 
