@@ -35,7 +35,7 @@ const ProductDetails = () => {
                     <h1 className="text-goback">VOLTAR</h1>
                 </Link>
                 <div className="row">
-                    <div className="col-6 pr-5">
+                    <div className="col-6 pe-5">
                         {isLoading ? <h1><ProductInfoLoader /></h1> : (
                             <>
                                 <div className="product-details-card text-center">
