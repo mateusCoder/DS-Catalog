@@ -1,5 +1,5 @@
-import { makeRequest } from 'core/utils/request'
 import React from 'react'
+import { makePrivateRequest } from 'core/utils/request'
 import { useState } from 'react'
 import BaseForm from '../../BaseForm'
 import './styles.scss'
@@ -30,13 +30,13 @@ const Form = () => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        const payLoad = {
+        const payload = {
             ...formData,
             imgUrl: 'https://images-americanas.b2w.io/produtos/01/00/img/2117190/5/2117190565_1GG.jpg',
             categories: [{ id: formData.category }]
         }
 
-        makeRequest({ url: '/products', method: 'POST', data: payLoad })
+        makePrivateRequest({ url: '/products', method: 'POST', data: payload })
         .then(() => {
             setFormData({name: '', category: '', price: '', description: ''})
         })

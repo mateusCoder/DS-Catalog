@@ -1,11 +1,11 @@
 import React from 'react'
+import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import ButtonIcon from 'core/components/ButtonIcon'
 import AuthCard from '../Card'
 import './styles.scss'
 import { makeLogin } from 'core/utils/request'
-import { useState } from 'react'
 import { saveSessionData } from 'core/utils/auth'
 
 type FormData = {
@@ -14,7 +14,7 @@ type FormData = {
 }
 
 const Login = () => {
-    const { register, handleSubmit } = useForm<FormData>();
+    const { register, handleSubmit, formState: { errors }} = useForm<FormData>();
     const [hasError, setHasError] = useState(false)
     const history = useHistory()
 
@@ -38,18 +38,32 @@ const Login = () => {
                 </div>)
             }
             <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-                <input
-                    className="form-control input-base margin-bottom-30"
-                    type="email"
-                    placeholder="Email"
-                    {...register('username', {required:true}) }
-                />
-                <input
-                    className="form-control input-base"
-                    type="password"
-                    placeholder="Senha"
-                    {...register('password', {required:true})}
-                />
+                <div className='margin-bottom-30'>
+                    <input
+                        className={`form-control input-base ${errors.username ? 'is-invalid' : ''}`}
+                        type="email"
+                        placeholder="Email"
+                        {...register('username')}
+                    />
+                    {errors.username && (
+                        <div className="invalid-feedback d-block">
+                            Email inválido
+                        </div>
+                    )}
+                </div>
+                <div className='margin-bottom-30'>
+                    <input
+                        className={`form-control input-base ${errors.password ? 'is-invalid' : ''}`}
+                        type="password"
+                        placeholder="Senha"
+                        {...register('password', { required: true })}
+                    />
+                    {errors.username && (
+                        <div className="invalid-feedback d-block">
+                            Senha inválida
+                        </div>
+                    )}
+                </div>
                 <Link to="/admin/auth/recover" className="login-link-recover">
                     Esqueci a senha ?
                 </Link>
