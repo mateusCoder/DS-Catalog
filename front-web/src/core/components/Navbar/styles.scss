@@ -5,6 +5,7 @@
 
     align-items: center;
     padding-left: 40px;
+    padding-right: 40px;
     margin: auto 0;
 }
 
@@ -15,25 +16,27 @@
 
 .main-menu{
     display: flex;
+    justify-content: center;
 
+    li:nth-child(2){
+        margin-left: 85px;
+        margin-right: 85px;
+    }
+}
+
+.nav-link{
     font-size: 18px;
-    width: 380px;
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
 
-    justify-content: space-between;
+    &.active{
+        font-weight: bold;
+        color: #FFF;
+    }
 
-    a{
-        font-style: normal;
-        color: rgba(255, 255, 255, 0.5);
-        text-decoration: none;
-
-        &.active{
-            font-weight: bold;
-            color: #FFF;
-        }
-
-        &.hover{
-            color: #FFF;
-        }
+    &.hover{
+        color: #FFF;
     }
 }
 
