@@ -18,7 +18,7 @@ const Form = () => {
     const history = useHistory()
 
     const onSubmit = (data: FormState) => {
-        makePrivateRequest({ url: '/products1', method: 'POST', data })
+        makePrivateRequest({ url: '/products', method: 'POST', data })
             .then(() => {
                 toast.info('Produto cadastrado com sucesso!')
                 history.push('/admin/products')
