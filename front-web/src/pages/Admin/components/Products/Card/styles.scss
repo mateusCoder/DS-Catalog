@@ -1,5 +1,13 @@
 .product-card-admin{
     margin-bottom: 20px;
+
+    .product-currency{
+        font-size: 14px;
+    }
+
+    .product-price{
+        font-size: 24px;
+    }
 }
 
 .product-card-image-admin{
@@ -11,4 +19,8 @@
     font-size: 18px;
     line-height: 25px;
     letter-spacing: -0.015em;
+}
+
+.bg-secondary{
+    background-color: blue;
 }
