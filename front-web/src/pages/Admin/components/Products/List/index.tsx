@@ -12,12 +12,12 @@ const List = () => {
 
     const history = useHistory();
 
-    console.log(productsResponse)
-
     useEffect(() => {
         const params = {
             page: activePage,
-            linesPerPage: 4
+            linesPerPage: 4,
+            direction: 'DESC',
+            orderBy: 'id'
         }
 
         setIsLoading(true)
