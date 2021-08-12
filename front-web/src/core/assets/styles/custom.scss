@@ -1,4 +1,8 @@
-$theme-color:(
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+$theme-colors :(
     "primary": #407BFF,
     "secondary": #E1E1E1
 );
@@ -6,4 +10,4 @@ $theme-color:(
 $body-bg: #F2F2F2;
 $body-color: #263238;
 
-@import '~bootstrap/scss/bootstrap.scss';
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
