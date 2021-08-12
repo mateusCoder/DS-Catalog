@@ -7,9 +7,10 @@ import { Link } from 'react-router-dom'
 
 type Props = {
     product: Product;
+    onRemove: (productId: number) => void
 }
 
-const Card = ( {product}: Props) => {
+const Card = ( {product, onRemove}: Props) => {
     return(
         <div className="card-base product-card-admin border-radius-10">
             <div className="row">
@@ -43,6 +44,7 @@ const Card = ( {product}: Props) => {
                     <button 
                         type="button" 
                         className="btn btn-outline-danger btn-block col-10 border-radius-10 button"
+                        onClick={ () => onRemove(product.id) }
                     >
                         EXCLUIR
                     </button >

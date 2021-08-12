@@ -1,18 +1,18 @@
-import Pagination from 'core/components/Pagination';
+import React, { useEffect, useState, useCallback } from 'react'
 import { ProductsReponse } from 'core/types/Product';
-import { makeRequest } from 'core/utils/request';
-import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
+import { toast } from 'react-toastify';
+import { makePrivateRequest, makeRequest } from 'core/utils/request';
+import Pagination from 'core/components/Pagination';
 import Card from '../Card'
 
 const List = () => {
     const [productsResponse, setProductsResponse] = useState<ProductsReponse>();
     const [isLoading, setIsLoading] = useState(false);
     const [activePage, setActivePage] = useState(0);
-
     const history = useHistory();
 
-    useEffect(() => {
+    const getProducts = useCallback(() => {
         const params = {
             page: activePage,
             linesPerPage: 4,
@@ -25,12 +25,32 @@ const List = () => {
             .then(response => setProductsResponse(response.data))
             .finally(() => {
                 setIsLoading(false);
-            })
-    }, [activePage]);
+        })
+    }, [activePage])
+
+    useEffect(() => {
+        getProducts()
+    }, [getProducts]);
     
 
     const handleCreate = () => {
         history.push('/admin/products/create')
+    }
+
+    const onRemove = (productId: number) => {
+        const confirm = window.confirm('Deseja realmente excluir este produto?')
+
+        if(confirm){
+            makePrivateRequest( {url: `/products/${productId}`,  method: 'DELETE'} )
+            .then(() => {
+                toast.info('Produto removido com sucesso!')
+                getProducts()
+
+            })
+            .catch(() =>{
+                toast.error('Erro ao remover produto!')
+            })
+        }
     }
 
     return(
@@ -40,7 +60,7 @@ const List = () => {
             </button>
             <div className="admin-list-container">
                 {productsResponse?.content.map(product => (
-                    <Card product={product} key={product.id}/>
+                    <Card product={product} key={product.id} onRemove={onRemove}/>
                 ))}
                 {productsResponse && (
                 <Pagination 
